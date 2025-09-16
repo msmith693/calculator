@@ -28,9 +28,10 @@ body{
   align-items: center;
   min-height:40px;
   border: none;
-  padding: 0 6px;
+  padding: 0 6px 0 6px;
   background-color: lightgray;
   border-radius: 8px;
+  overflow: hidden;
 
 }
 

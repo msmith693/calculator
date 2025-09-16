@@ -32,6 +32,9 @@ function operate(num1, num2, operator) {
   }
 }
 
+function formatNumber(num){
+
+}
 let display = document.querySelector("#display");
 
 function updateDisplay() {   //FIX BUG where numbers go past display
@@ -86,6 +89,10 @@ function updateDisplay() {   //FIX BUG where numbers go past display
       else{
         let num2=sum[1];
         let answer = operate(num1, num2, operatorVal);
+        answer = Number(answer.toFixed(4));  //Number strips off trailing uneccessary 0s, automatically formatting the answer correctly if it is a round number
+        if(answer.toString().length>8){
+          answer = answer.toExponential(4);
+        }
         display.textContent = answer;
       }
       operatorFlag=false;
