@@ -14,10 +14,11 @@ body{
   flex-direction: column;
   width: 160px;
   border-radius: 12px;
-  border: 2px solid black;
+  border: 1px solid grey;
   padding: 20px;
   background-color: whitesmoke;
   margin: 5vh auto;
+  box-shadow: -4px 4px 5px lightgray;
 }
 
 
@@ -26,7 +27,7 @@ body{
   justify-content: end;
   align-items: center;
   min-height:40px;
-  border: 2px solid black;
+  border: none;
   padding: 0 6px;
   background-color: lightgray;
   border-radius: 8px;
@@ -42,6 +43,10 @@ button{
   min-width: 35px;
   margin: 2px;
   border: none;
+  border-radius: 30px;
+  aspect-ratio: 1;
+  background-color: rgb(224, 223, 223);
+
 }
 
 .buttons{    
@@ -58,16 +63,36 @@ button{
   margin:0;
 }
 
+.numbers button:hover{
+  background-color:lightgrey;
+}
+
 .operators{
   display:flex;
   flex-direction: column;
 }
 
-#clear{
-  width: 74px;
-  margin-left: 2px;
+.operators button{
+  background-color: rgb(255, 223, 40);
 }
 
-#erase{
+.operators button:hover{
+  background-color:rgb(227, 198, 36);
+}
+
+#clear{
+  width: 74px;
+  aspect-ratio:unset;
+  margin-left: 2px;
+  background-color: rgb(255, 84, 84);
+}
+
+#erase {
   font-size: 18px;
+  padding: 0 6px 1px 5px;  /*custom padding due to unicode character being strangely aligned as default*/
+  background-color: rgb(255, 84, 84);
+}
+
+#erase:hover, #clear:hover{
+  background-color:rgb(203, 67, 67);
 }
