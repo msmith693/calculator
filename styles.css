@@ -7,7 +7,6 @@ body{
   display:flex;
   justify-content: center;
   align-items: center;
-  margin: 20vh auto;
 }
 
 .calculator{
@@ -18,6 +17,7 @@ body{
   border: 2px solid black;
   padding: 20px;
   background-color: whitesmoke;
+  margin: 5vh auto;
 }
 
 
@@ -33,16 +33,19 @@ body{
 
 }
 
+.left{  /*the left hand side of the button display, comprising clear, backspace and numbers*/
+  display: flex;
+  flex-wrap: wrap;
+}
+
 button{
   min-width: 35px;
   margin: 2px;
   border: none;
 }
 
-/* doesn't include clear button */
 .buttons{    
   display:flex;
-  flex-wrap: wrap;
   justify-content: center;
   padding: 10px 0;
 }
@@ -51,7 +54,7 @@ button{
   display:flex;
   flex-wrap: wrap;
   flex: none;
-  width: 120px;
+  width: 117px;
   margin:0;
 }
 
@@ -63,4 +66,8 @@ button{
 #clear{
   width: 74px;
   margin-left: 2px;
+}
+
+#erase{
+  font-size: 18px;
 }

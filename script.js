@@ -44,53 +44,59 @@ function updateDisplay() {
   let operatorsArr = document.querySelectorAll(".operator");
   let clearBtn = document.querySelector("#clear");
   let equalsBtn = document.querySelector("#equals");
+  let eraseBtn = document.querySelector("#erase");
 
   numbersArr.forEach(number => {
     number.addEventListener("click", () => {
-      let numberVal = number.textContent;
+      let numberVal = Number(number.textContent);
       display.textContent = display.textContent + numberVal;
-      clearBtn.textContent = "CE"
       clearEntryFlag = true;
+      console.log(display.textContent);
     })
   })
   operatorsArr.forEach(operator => {
     operator.addEventListener("click", () => {
       operatorVal = operator.id;   //the text content of the operators are symbols, not conducive to variable assignment
-      operatorSymbol = operator.textContent
+      operatorSymbol = operator.textContent;
       if(!operatorFlag){
         display.textContent=display.textContent+operatorSymbol;
         operatorFlag = true;
       }
+      console.log(display.textContent);
     })
   })
   clearBtn.addEventListener("click", () => {
-    if(clearEntryFlag){
+      display.textContent = "";
+      operatorFlag = false;
       console.log(display.textContent);
+
+  })
+
+  eraseBtn.addEventListener("click", ()=>{
       let lastItem = display.textContent.slice(-1)
       if(isNaN(lastItem)){  //allows operator to be changed if cleared
         operatorFlag = false;
       }
       display.textContent = display.textContent.slice(0, -1);
       clearEntryFlag = false;
-      clearBtn.textContent = "AC"
-    }
-    else{
-      display.textContent = "";
-      operatorFlag = false;
-    }
+      console.log(display.textContent);
   })
 
   equalsBtn.addEventListener("click", () => {
     if(operatorVal!=null){
       let sum = display.textContent.split(operatorSymbol);
       let num1=sum[0];
-      let num2=sum[1];
-      let answer = operate(num1, num2, operatorVal);
-      display.textContent = answer;
+      if(sum.length===1){   //covers cases where no operator has been put in and user just clicks equals on a number
+        display.textContent = num1;
+      }
+      else{
+        let num2=sum[1];
+        let answer = operate(num1, num2, operatorVal);
+        display.textContent = answer;
+      }
       operatorFlag=false;
     }
   })
-
 }
 
 updateDisplay();
