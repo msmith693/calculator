@@ -19,9 +19,6 @@ function divide(num1, num2) {
   return num1 / num2;
 }
 
-
-let display = document.querySelector("#display");
-
 function operate(num1, num2, operator) {
   switch(operator){
     case "add":
@@ -35,7 +32,9 @@ function operate(num1, num2, operator) {
   }
 }
 
-function updateDisplay() {
+let display = document.querySelector("#display");
+
+function updateDisplay() {   //FIX BUG where numbers go past display
   let operatorFlag = false;
   let clearEntryFlag = false;
   let operatorVal;
@@ -51,25 +50,21 @@ function updateDisplay() {
       let numberVal = Number(number.textContent);
       display.textContent = display.textContent + numberVal;
       clearEntryFlag = true;
-      console.log(display.textContent);
     })
   })
   operatorsArr.forEach(operator => {
     operator.addEventListener("click", () => {
-      operatorVal = operator.id;   //the text content of the operators are symbols, not conducive to variable assignment
-      operatorSymbol = operator.textContent;
       if(!operatorFlag){
+        operatorVal = operator.id;   //the text content of the operators are symbols, not conducive to variable assignment
+        operatorSymbol = operator.textContent;
         display.textContent=display.textContent+operatorSymbol;
         operatorFlag = true;
       }
-      console.log(display.textContent);
     })
   })
   clearBtn.addEventListener("click", () => {
       display.textContent = "";
       operatorFlag = false;
-      console.log(display.textContent);
-
   })
 
   eraseBtn.addEventListener("click", ()=>{
@@ -79,7 +74,6 @@ function updateDisplay() {
       }
       display.textContent = display.textContent.slice(0, -1);
       clearEntryFlag = false;
-      console.log(display.textContent);
   })
 
   equalsBtn.addEventListener("click", () => {
